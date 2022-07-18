@@ -6,25 +6,30 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:01:36 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/15 16:16:19 by mliew            ###   ########.fr       */
+/*   Updated: 2022/07/18 18:27:43 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
+#include "minitalk.h"
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	signal()
+	int	id;
+	
+	id = getpid();
+	ft_printf("%d", id);
+	pause();
 }
 
-sigemptyset
-sigaddset
-sigaction
-kill
-getpid
-malloc
-free
-pause
-sleep
-usleep
-exit
+// signal
+// sigemptyset
+// sigaddset
+// sigactiond
+// kill
+// getpid
+// malloc
+// free
+// pause
+// sleep
+// usleep
+// exit

@@ -1,18 +1,27 @@
-NAME	= 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
+NAME	= minitalk.a
+CLIENT	= client.c
+SERVER	= server.c
 
-all: $(NAME)
+all: library $(NAME)
 
 $(NAME):
-	$(CC)
+	$(CC) $(CFLAGS) $(CLIENT) $(NAME) -o client
+	$(CC) $(CFLAGS) $(SERVER) $(NAME) -o server
+
+library:
+	make -C libft
+	cp libft/libft.a .
+	mv libft.a $(NAME)
 
 clean:
-	rm -rf $(OBJS)
+	make clean -C libft
 
 fclean: clean
-	rm -rf $(NAME)
+	$(RM) $(NAME) client server
+	make fclean -C libft
 
 re: fclean all
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY: all $(NAME) library clean fclean re
