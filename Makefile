@@ -1,5 +1,5 @@
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= #-Wall -Wextra -Werror
 NAME	= minitalk.a
 CLIENT	= client.c
 SERVER	= server.c
