@@ -6,37 +6,35 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:01:36 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/30 13:33:32 by mliew            ###   ########.fr       */
+/*   Updated: 2022/08/01 18:30:07 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	handler(int num)
+static void	handler(int sig)
 {
-	write(STDOUT_FILENO,"Terminal is terminating...\n", 28);
+	static int	bit;
+	
+	if (sig == SIGUSR1)
+		bit = 1;
+	if (sig == SIGUSR2)
+		bit = 0;
+	bit <<= 1;
 }
 
-void	handler2(int num)
-{
-	int pid = getpid();
-	write(STDOUT_FILENO,"TERMINAL KILLED\n", 17);
-	kill(pid, SIGKILL);
-}
 
 int	main()
 {
 	int pid = getpid();
 	
 	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler2);
+	signal(SIGUSR2, handler);
+	printf("%d\n", pid);
 	while (1)
 	{
-		printf("Im just stuck in a loop. %d\n", pid);
 		sleep(1);
 	}
-	// ft_printf("%d\n", id);
-	// pause();
 }
 
 // signal
