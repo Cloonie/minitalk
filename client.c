@@ -6,11 +6,17 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 15:59:41 by mliew             #+#    #+#             */
-/*   Updated: 2022/08/02 16:33:02 by mliew            ###   ########.fr       */
+/*   Updated: 2022/08/02 18:27:08 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void	message(int sig)
+{
+	if (sig == SIGUSR1)
+		printf("Message Sent");
+}
 
 void	client_handler(int pid, char *msg)
 {
@@ -49,4 +55,5 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	client_handler(pid, msg);
+	signal(SIGUSR1, message);
 }

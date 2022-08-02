@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 15:55:20 by mliew             #+#    #+#             */
-/*   Updated: 2022/07/18 16:11:40 by mliew            ###   ########.fr       */
+/*   Updated: 2022/08/02 17:30:39 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft/libft.h"
 
 # include <unistd.h>
-# include <stdlib.h>
 # include <signal.h>
 
 #endif
