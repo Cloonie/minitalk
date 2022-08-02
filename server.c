@@ -6,46 +6,37 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:01:36 by mliew             #+#    #+#             */
-/*   Updated: 2022/08/01 18:30:07 by mliew            ###   ########.fr       */
+/*   Updated: 2022/08/02 17:09:11 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	handler(int sig)
+static void	server_handler(int sig)
 {
-	static int	bit;
-	
+	static int	c;
+	static int	bit_count;
+
 	if (sig == SIGUSR1)
-		bit = 1;
-	if (sig == SIGUSR2)
-		bit = 0;
-	bit <<= 1;
-}
-
-
-int	main()
-{
-	int pid = getpid();
-	
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
-	printf("%d\n", pid);
-	while (1)
+		c += 1;
+	if (bit_count == 7)
 	{
-		sleep(1);
+		write(1, &c, 1);
+		bit_count = -1;
+		c = 0;
 	}
+	c <<= 1;
+	bit_count++;
 }
 
-// signal
-// sigemptyset
-// sigaddset
-// sigaction
-// kill
-// getpid
-// malloc
-// free
-// pause
-// sleep
-// usleep
-// exit
+int	main(void)
+{
+	int	server_pid;
+
+	server_pid = getpid();
+	signal(SIGUSR1, server_handler);
+	signal(SIGUSR2, server_handler);
+	printf("Server PID: %d\n", server_pid);
+	while (1)
+		sleep(1);
+}
