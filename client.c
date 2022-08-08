@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 15:59:41 by mliew             #+#    #+#             */
-/*   Updated: 2022/08/08 14:19:57 by mliew            ###   ########.fr       */
+/*   Updated: 2022/08/08 14:55:04 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	message(int sig)
 {
 	(void)sig;
-	write (1, "Message received by client.", 27);
+	write (1, "Message received by server.", 27);
 	exit (0);
 }
 
