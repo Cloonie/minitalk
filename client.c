@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 15:59:41 by mliew             #+#    #+#             */
-/*   Updated: 2022/08/05 16:09:38 by mliew            ###   ########.fr       */
+/*   Updated: 2022/08/08 14:19:57 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	message(int sig)
 {
 	(void)sig;
-	write (1, "Message Sent.", 1);
+	write (1, "Message received by client.", 27);
+	exit (0);
 }
 
 void	client_handler(int pid, char *msg)
@@ -25,7 +26,7 @@ void	client_handler(int pid, char *msg)
 	char	c;
 
 	byte_count = 0;
-	while (msg[byte_count])
+	while (msg[byte_count] - 1)
 	{
 		c = msg[byte_count];
 		bit_count = 8;
@@ -44,6 +45,7 @@ void	client_handler(int pid, char *msg)
 
 int	main(int ac, char **av)
 {
+	signal(SIGUSR1, message);
 	if (ac != 3)
 		ft_printf("Invalid! Please input: ./client [PID] [MESSAGE]");
 	else
