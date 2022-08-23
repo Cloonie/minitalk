@@ -6,7 +6,7 @@
 /*   By: mliew < mliew@student.42kl.edu.my>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 15:59:41 by mliew             #+#    #+#             */
-/*   Updated: 2022/08/08 14:55:04 by mliew            ###   ########.fr       */
+/*   Updated: 2022/08/23 13:14:08 by mliew            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	client_handler(int pid, char *msg)
 	char	c;
 
 	byte_count = 0;
-	while (msg[byte_count] - 1)
+	while (byte_count <= ft_strlen(msg))
 	{
 		c = msg[byte_count];
 		bit_count = 8;
